@@ -18,17 +18,20 @@ bodyRef.classList.add(LIGHT);
 
 let darkTheme = localStorage.getItem('darkTheme');
 
+function changeClass (newClass, oldClass) {
+  bodyRef.classList.remove(oldClass);
+  bodyRef.classList.add(newClass);
+}
+
 const turnOnDarkTheme = () => {
-  bodyRef.classList.remove(LIGHT);
-  bodyRef.classList.add(DARK);
+  changeClass(DARK, LIGHT)
   localStorage.setItem('darkTheme', 'dark');
   darkThemeCheckBoxRef.setAttribute('checked', true)
 }
 
 const turnOffDarkTheme = () => {
-   bodyRef.classList.remove(DARK);
-   bodyRef.classList.add(LIGHT);
-   localStorage.setItem('darkTheme', 'light');
+   changeClass(LIGHT, DARK)
+  localStorage.setItem('darkTheme', 'light');
 }
 
 if (darkTheme === 'dark') {
